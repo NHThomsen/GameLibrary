@@ -5,18 +5,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlTypes;
 
 namespace GameLibrary.Tests
 {
     [TestClass()]
     public class WorldTests
     {
+        private static GameLogging gameLogging;
+        [ClassInitialize]
+        public static void Setup(TestContext context)
+        {
+            gameLogging = new GameLogging();
+        }
+
         [TestMethod()]
         public void TestNameFromConfig()
         {
             string expectedName = "Far far away";
 
-            World world = new World();
+            World world = new World(gameLogging);
 
             string actualName = world.Name;
 
@@ -28,7 +36,7 @@ namespace GameLibrary.Tests
         {
             int expected = 20;
 
-            World world = new World();
+            World world = new World(gameLogging);
 
             int actual = world.WorldLength;
 
@@ -40,7 +48,7 @@ namespace GameLibrary.Tests
         {
             int expected = 20;
 
-            World world = new World();
+            World world = new World(gameLogging);
 
             int actual = world.WorldHeight;
 

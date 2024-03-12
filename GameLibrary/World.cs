@@ -11,7 +11,7 @@ namespace GameLibrary
         private int height;
         private XmlDocument? configDocument = new XmlDocument();
 
-        public World()
+        public World(GameLogging gameLogging)
         {
             configDocument.Load("WorldConfig.xml");
             XmlNode? nameNode = configDocument.DocumentElement.SelectSingleNode("Name");
@@ -23,6 +23,7 @@ namespace GameLibrary
             {
                 Name = "Standard world";
             }
+            gameLogging.WriteInformationToText("World name: " + Name);
 
             XmlNode lengthNode = configDocument.DocumentElement.SelectSingleNode("Length");
             if (int.TryParse(lengthNode.InnerText.Trim(), out length))
@@ -33,6 +34,7 @@ namespace GameLibrary
             {
                 WorldLength = 10;
             }
+            gameLogging.WriteInformationToText("World length: " + WorldLength);
 
             XmlNode heightNode = configDocument.DocumentElement.SelectSingleNode("Height");
             if(int.TryParse(heightNode.InnerText.Trim(),out height))
@@ -43,6 +45,7 @@ namespace GameLibrary
             {
                 WorldHeight = 10;
             }
+            gameLogging.WriteInformationToText("World height: " + WorldHeight);
         }
     }
 }
