@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using GameLibrary.Interfaces;
+using System.Xml;
 
 namespace GameLibrary
 {
@@ -11,7 +12,7 @@ namespace GameLibrary
         private int height;
         private XmlDocument? configDocument = new XmlDocument();
 
-        public World(GameLogging gameLogging)
+        public World(IGameLogging gameLogging)
         {
             configDocument.Load("WorldConfig.xml");
             XmlNode? nameNode = configDocument.DocumentElement.SelectSingleNode("Name");
