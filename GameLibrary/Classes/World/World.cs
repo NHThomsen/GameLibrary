@@ -1,11 +1,11 @@
 ﻿using GameLibrary.Interfaces;
 using System.Xml;
 
-namespace GameLibrary
+namespace GameLibrary.Classes.World
 {
     public class World
     {
-        public string Name { get;  private set; }
+        public string Name { get; private set; }
         public int WorldLength { get; private set; }
         private int length;
         public int WorldHeight { get; private set; }
@@ -38,7 +38,7 @@ namespace GameLibrary
             gameLogging.WriteInformationToText("World length: " + WorldLength);
 
             XmlNode heightNode = configDocument.DocumentElement.SelectSingleNode("Height");
-            if(int.TryParse(heightNode.InnerText.Trim(),out height))
+            if (int.TryParse(heightNode.InnerText.Trim(), out height))
             {
                 WorldHeight = height;
             }

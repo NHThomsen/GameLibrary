@@ -1,11 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GameLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlTypes;
+using GameLibrary.Classes.World;
+using GameLibrary.Logging;
 
 namespace GameLibrary.Tests
 {
