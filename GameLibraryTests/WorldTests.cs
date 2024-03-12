@@ -23,7 +23,28 @@ namespace GameLibrary.Tests
             Assert.AreEqual(expectedName, actualName);
         }
 
+        [TestMethod()]
         public void TestLengthFromConfig() 
-        { }
+        {
+            int expected = 20;
+
+            World world = new World();
+
+            int actual = world.WorldLength;
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void TestHeightFromConfig()
+        {
+            int expected = 20;
+
+            World world = new World();
+
+            int actual = world.WorldHeight;
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
