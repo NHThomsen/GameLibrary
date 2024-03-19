@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace GameLibrary.Classes.Damage
 {
+    /// <summary>
+    /// Damage taken must never be negative
+    /// </summary>
     public class Damage
     {
         public double DamageAmount { get; private set; }
