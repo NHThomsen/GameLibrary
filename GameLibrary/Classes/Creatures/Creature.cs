@@ -1,4 +1,5 @@
-﻿using GameLibrary.Classes.Items;
+﻿using GameLibrary.Classes.Damage;
+using GameLibrary.Classes.Items;
 using GameLibrary.Classes.World;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace GameLibrary.Classes.Creatures
             Health = health;
             Name = name;
         }
-        public abstract int TakeDamage();
-        public abstract int GiveDamage();
+        public abstract Damage.Damage TakeDamage();
+        public abstract Damage.Damage GiveDamage();
     }
 }
