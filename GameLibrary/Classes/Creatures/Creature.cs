@@ -15,10 +15,10 @@ namespace GameLibrary.Classes.Creatures
         public List<Item> Loot {  get; protected set; }
         public int Health { get; protected set; }
         public string Name { get; protected set; }
-        public Creature(Position position, int health, string name) 
+        public Creature(Position position, int health, string name, List<Item> carriedLoot) 
         {
             Position = position;
-            Loot = new List<Item>();
+            Loot = carriedLoot;
             Health = health;
             Name = name;
         }
