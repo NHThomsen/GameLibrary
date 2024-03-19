@@ -1,4 +1,5 @@
 ﻿using GameLibrary.Interfaces;
+using GameLibrary.Logging;
 using System.Xml;
 
 namespace GameLibrary.Classes.World
@@ -11,9 +12,25 @@ namespace GameLibrary.Classes.World
         public int WorldHeight { get; private set; }
         private int height;
         private XmlDocument? configDocument = new XmlDocument();
+        private IGameLogging gameLogging;
 
-        public World(IGameLogging gameLogging)
+        private static World? instance;
+        
+        public static World Instance
         {
+            get
+            {
+                if(instance == null) 
+                {
+                    instance = new World();
+                }
+                return instance;
+            }
+        }
+
+        public World()
+        {
+            gameLogging = new GameLogging();
             configDocument.Load("WorldConfig.xml");
             XmlNode? nameNode = configDocument.DocumentElement.SelectSingleNode("Name");
             if (nameNode != null)
