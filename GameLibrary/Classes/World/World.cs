@@ -4,6 +4,9 @@ using System.Xml;
 
 namespace GameLibrary.Classes.World
 {
+    /// <summary>
+    /// The world is singleton because values get loaded from a config
+    /// </summary>
     public class World
     {
         public string Name { get; private set; }
