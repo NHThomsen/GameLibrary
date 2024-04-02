@@ -1,4 +1,5 @@
-﻿using GameLibrary.Classes.Items;
+﻿using GameLibrary.Classes.Damage;
+using GameLibrary.Classes.Items;
 using GameLibrary.Classes.Player.States;
 using GameLibrary.Classes.World;
 using GameLibrary.Interfaces;
@@ -58,6 +59,10 @@ namespace GameLibrary.Classes.Player
         public List<DefensiveItem> GetDefensiveItems()
         {
             return Inventory.OfType<DefensiveItem>().ToList();
+        }
+        public Damage.Damage CalculateTakeDamage(Damage.Damage taken)
+        {
+            return State.CalculateTakeDamage(taken);
         }
         /// <summary>
         /// Method meant to called when something poisons them
