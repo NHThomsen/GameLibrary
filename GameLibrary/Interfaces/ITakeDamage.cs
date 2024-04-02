@@ -9,6 +9,6 @@ namespace GameLibrary.Interfaces
 {
     public interface ITakeDamage
     {
-        public abstract Damage TakeDamage();
+        public abstract Damage TakeDamage(Damage taken);
     }
 }

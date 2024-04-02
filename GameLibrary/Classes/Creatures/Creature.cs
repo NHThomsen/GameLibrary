@@ -17,6 +17,10 @@ namespace GameLibrary.Classes.Creatures
         public List<Item> Loot {  get; protected set; }
         public int HealthPoints { get; protected set; }
         public string Name { get; protected set; }
+        public bool IsDead
+        {
+            get { return HealthPoints < 0; }
+        }
         public Creature(Position position, int healthPoints, string name, List<Item> carriedLoot) 
         {
             Position = position;
@@ -24,7 +28,7 @@ namespace GameLibrary.Classes.Creatures
             HealthPoints = healthPoints;
             Name = name;
         }
-        public abstract Damage.Damage TakeDamage();
+        public abstract Damage.Damage TakeDamage(Damage.Damage taken);
         public abstract Damage.Damage GiveDamage();
     }
 }

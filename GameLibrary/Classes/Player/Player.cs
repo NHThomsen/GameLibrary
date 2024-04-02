@@ -17,7 +17,7 @@ namespace GameLibrary.Classes.Player
     public class Player
     {
         public string Name { get; private set; }
-        public int HealthPoint { get; private set; }
+        public int HealthPoints { get; private set; }
         public Position Position { get; set; }
         public List<Item> Inventory { get; }
         public IState State { get; private set; }
@@ -28,10 +28,14 @@ namespace GameLibrary.Classes.Player
                 return State.GetType() == typeof(PoisonedState);
             }
         }
+        public bool IsDead
+        {
+            get { return HealthPoints < 0; }
+        }
         public Player(string name, int healthPoints = 100) 
         {
             Name = name;
-            HealthPoint = healthPoints;
+            HealthPoints = healthPoints;
             Position = new Position(0,0);
             Inventory = new List<Item>();
             State = new NormalState();
