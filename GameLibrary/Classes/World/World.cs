@@ -68,5 +68,17 @@ namespace GameLibrary.Classes.World
             }
             gameLogging.WriteInformationToText("World height: " + WorldHeight);
         }
+        public bool InsideWorld(Position position)
+        {
+            if(position.X < 0 || position.Y < 0)
+            {
+                return false;
+            }
+            if(position.X > WorldLength || position.Y > WorldHeight) 
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
