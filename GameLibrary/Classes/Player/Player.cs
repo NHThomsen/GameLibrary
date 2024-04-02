@@ -18,12 +18,14 @@ namespace GameLibrary.Classes.Player
         public int HealthPoint { get; private set; }
         public Position Position { get; set; }
         public List<Item> Inventory { get; }
-        public Player(string name, int healthPoints = 100) 
+        private IGameLogging GameLogging { get; set; }
+        public Player(string name, IGameLogging gameLogging, int healthPoints = 100) 
         {
             Name = name;
             HealthPoint = healthPoints;
             Position = new Position(0,0);
             Inventory = new List<Item>();
+            GameLogging = gameLogging;
         }
         /// <summary>
         /// Adds item to inventory
@@ -32,6 +34,7 @@ namespace GameLibrary.Classes.Player
         public void AddToInventory(Item item) 
         {
             Inventory.Add(item);
+            GameLogging.WriteInformationToText("Added item: " + item.Name + " to inventory");
         }
         /// <summary>
         /// Gets offensive items from the players inventory
