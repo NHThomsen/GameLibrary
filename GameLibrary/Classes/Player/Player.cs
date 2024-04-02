@@ -20,6 +20,13 @@ namespace GameLibrary.Classes.Player
         public Position Position { get; set; }
         public List<Item> Inventory { get; }
         public IState State { get; private set; }
+        public bool IsPoisoned
+        {
+            get 
+            {
+                return State.GetType() == typeof(PoisonedState);
+            }
+        }
         public Player(string name, int healthPoints = 100) 
         {
             Name = name;
