@@ -46,8 +46,8 @@ namespace GameLibrary.Classes.World
             }
             gameLogging.WriteInformationToText("World name: " + Name);
 
-            XmlNode lengthNode = configDocument.DocumentElement.SelectSingleNode("Length");
-            if (int.TryParse(lengthNode.InnerText.Trim(), out length))
+            XmlNode? lengthNode = configDocument.DocumentElement.SelectSingleNode("Length");
+            if (int.TryParse(lengthNode?.InnerText.Trim(), out length))
             {
                 WorldLength = length;
             }
@@ -57,8 +57,8 @@ namespace GameLibrary.Classes.World
             }
             gameLogging.WriteInformationToText("World length: " + WorldLength);
 
-            XmlNode heightNode = configDocument.DocumentElement.SelectSingleNode("Height");
-            if (int.TryParse(heightNode.InnerText.Trim(), out height))
+            XmlNode? heightNode = configDocument.DocumentElement.SelectSingleNode("Height");
+            if (int.TryParse(heightNode?.InnerText.Trim(), out height))
             {
                 WorldHeight = height;
             }

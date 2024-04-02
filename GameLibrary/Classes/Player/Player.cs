@@ -22,6 +22,8 @@ namespace GameLibrary.Classes.Player
         {
             Name = name;
             HealthPoint = healthPoints;
+            Position = new Position(0,0);
+            Inventory = new List<Item>();
         }
         /// <summary>
         /// Adds item to inventory
