@@ -59,5 +59,9 @@ namespace GameLibrary.Classes.Player
         {
             State = new PoisonedState();
         }
+        public void CurePlayer()
+        {
+            State = new NormalState();
+        }
     }
 }
