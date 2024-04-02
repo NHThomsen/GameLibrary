@@ -59,6 +59,9 @@ namespace GameLibrary.Classes.Player
         {
             State = new PoisonedState();
         }
+        /// <summary>
+        /// Method meant to remove status effects on a player
+        /// </summary>
         public void CurePlayer()
         {
             State = new NormalState();
