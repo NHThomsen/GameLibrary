@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace GameLibrary.Classes.Player
 {
+    /// <summary>
+    /// Player to be controlled
+    /// </summary>
     public class Player
     {
         public string Name { get; private set; }
@@ -20,14 +23,26 @@ namespace GameLibrary.Classes.Player
             Name = name;
             HealthPoint = healthPoints;
         }
+        /// <summary>
+        /// Adds item to inventory
+        /// </summary>
+        /// <param name="item">Item to be added to the inventory</param>
         public void AddToInventory(Item item) 
         {
             Inventory.Add(item);
         }
+        /// <summary>
+        /// Gets offensive items from the players inventory
+        /// </summary>
+        /// <returns>List of offensive items</returns>
         public List<OffensiveItem> GetOffensiveItems()
         {
             return Inventory.OfType<OffensiveItem>().ToList();
         }
+        /// <summary>
+        /// Gets defensive items from the players inventory
+        /// </summary>
+        /// <returns>List of defensive items</returns>
         public List<DefensiveItem> GetDefensiveItems()
         {
             return Inventory.OfType<DefensiveItem>().ToList();
