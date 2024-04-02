@@ -19,5 +19,17 @@ namespace GameLibrary.Classes.Player
             Name = name;
             HealthPoint = healthPoints;
         }
+        public void AddToInventory(Item item) 
+        {
+            Inventory.Add(item);
+        }
+        public List<OffensiveItem> GetOffensiveItems()
+        {
+            return Inventory.OfType<OffensiveItem>().ToList();
+        }
+        public List<DefensiveItem> GetDefensiveItems()
+        {
+            return Inventory.OfType<DefensiveItem>().ToList();
+        }
     }
 }
