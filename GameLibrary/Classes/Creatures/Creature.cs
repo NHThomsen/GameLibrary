@@ -13,13 +13,13 @@ namespace GameLibrary.Classes.Creatures
     {
         public Position Position { get; protected set; }
         public List<Item> Loot {  get; protected set; }
-        public int Health { get; protected set; }
+        public int HealthPoints { get; protected set; }
         public string Name { get; protected set; }
-        public Creature(Position position, int health, string name, List<Item> carriedLoot) 
+        public Creature(Position position, int healthPoints, string name, List<Item> carriedLoot) 
         {
             Position = position;
             Loot = carriedLoot;
-            Health = health;
+            HealthPoints = healthPoints;
             Name = name;
         }
         public abstract Damage.Damage TakeDamage();
