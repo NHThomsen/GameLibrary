@@ -1,5 +1,6 @@
 ﻿using GameLibrary.Classes.Items;
 using GameLibrary.Classes.World;
+using GameLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

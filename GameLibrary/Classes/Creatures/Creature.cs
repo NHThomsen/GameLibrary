@@ -1,15 +1,17 @@
 ﻿using GameLibrary.Classes.Damage;
 using GameLibrary.Classes.Items;
 using GameLibrary.Classes.World;
+using GameLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
 
 namespace GameLibrary.Classes.Creatures
 {
-    public abstract class Creature
+    public abstract class Creature : ITakeDamage, IGiveDamage
     {
         public Position Position { get; protected set; }
         public List<Item> Loot {  get; protected set; }
