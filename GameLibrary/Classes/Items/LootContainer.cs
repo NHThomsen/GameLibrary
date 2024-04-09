@@ -17,6 +17,14 @@ namespace GameLibrary.Classes.Items
                 return Loot?.Count ?? 0;
             }
         }
+        public List<Item>? GetLoot()
+        {
+            if(Loot == null)
+            {
+                return null;
+            }
+            return Loot;
+        }
         public abstract void AddToContainer(Item item);
     }
 }
