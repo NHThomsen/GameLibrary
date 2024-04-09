@@ -14,12 +14,10 @@ namespace GameLibrary.Classes.Damage
     public class Damage
     {
         public double DamageAmount { get; private set; }
-        private IGameLogging GameLogging { set; get; }
         public Damage(double dmg) 
         {
             if(dmg < 0) 
             {
-                GameLogging.WriteInformationToText("Damage was below zero");
                 throw new ArgumentException("Damage must not be below 0");
             }
             DamageAmount = dmg;

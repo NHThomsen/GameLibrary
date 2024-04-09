@@ -47,7 +47,7 @@ namespace GameLibrary.Logging
 
         public void WriteWarningToText(string warning)
         {
-            traceSource.TraceEvent(TraceEventType.Warning,100, warning);
+            traceSource.TraceEvent(TraceEventType.Warning, 100, warning);
         }
     }
 }

@@ -41,6 +41,7 @@ namespace GameLibrary.Classes.Player
             Inventory = new List<Item>();
             State = new NormalState();
             GameLogging = gameLogging;
+            GameLogging.WriteInformationToText(Name + " was created");
         }
         /// <summary>
         /// Adds item to inventory
@@ -49,6 +50,7 @@ namespace GameLibrary.Classes.Player
         public void AddToInventory(Item item) 
         {
             Inventory.Add(item);
+            GameLogging.WriteInformationToText("Added item " + item.Name + " to inventory");
         }
         /// <summary>
         /// Gets offensive items from the players inventory
@@ -76,6 +78,7 @@ namespace GameLibrary.Classes.Player
         public void PoisonPlayer()
         {
             State = new PoisonedState();
+            GameLogging.WriteInformationToText("Player has been poisoned");
         }
         /// <summary>
         /// Method meant to remove status effects on a player
