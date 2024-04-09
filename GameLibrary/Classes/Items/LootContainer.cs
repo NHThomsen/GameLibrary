@@ -9,6 +9,6 @@ namespace GameLibrary.Classes.Items
 {
     public abstract class LootContainer : WorldObject
     {
-        public List<Item> Loot {  get; set; }
+        public List<Item> Loot {  get; set; } = new List<Item>();
     }
 }
