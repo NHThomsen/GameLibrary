@@ -16,9 +16,10 @@ namespace GameLibrary.Classes.Creatures
     {
         public Position Position { get; protected set; }
         public List<Item> Loot {  get; protected set; }
-        public int HealthPoints { get; protected set; }
+        public double HealthPoints { get; protected set; }
         public string Name { get; protected set; }
         public IGameLogging GameLogging { get; protected set; }
+        protected Random RandomGenerator = new Random();
         public bool IsDead
         {
             get { return HealthPoints < 0; }

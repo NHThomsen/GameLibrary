@@ -17,7 +17,7 @@ namespace GameLibrary.Classes.Player
     public class Player
     {
         public string Name { get; private set; }
-        public int HealthPoints { get; private set; }
+        public double HealthPoints { get; private set; }
         public Position Position { get; set; }
         public List<Item> Inventory { get; }
         public IState State { get; private set; }
