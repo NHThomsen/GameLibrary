@@ -2,6 +2,7 @@
 using GameLibrary.Classes.Items;
 using GameLibrary.Classes.World;
 using GameLibrary.Interfaces;
+using GameLibrary.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,16 +18,18 @@ namespace GameLibrary.Classes.Creatures
         public List<Item> Loot {  get; protected set; }
         public int HealthPoints { get; protected set; }
         public string Name { get; protected set; }
+        public IGameLogging GameLogging { get; protected set; }
         public bool IsDead
         {
             get { return HealthPoints < 0; }
         }
-        public Creature(Position position, int healthPoints, string name, List<Item> carriedLoot) 
+        public Creature(Position position, int healthPoints, string name, List<Item> carriedLoot, IGameLogging gameLogging) 
         {
             Position = position;
             Loot = carriedLoot;
             HealthPoints = healthPoints;
             Name = name;
+            GameLogging = gameLogging;
         }
         public abstract Damage.Damage TakeDamage(Damage.Damage taken);
         public abstract Damage.Damage GiveDamage();
