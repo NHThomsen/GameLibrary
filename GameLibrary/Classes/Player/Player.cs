@@ -16,15 +16,25 @@ namespace GameLibrary.Classes.Player
     /// </summary>
     public class Player
     {
+        // The name of the player
         public string Name { get; private set; }
+        // Amount of health points a player has
         public double HealthPoints { get; private set; }
+        // The players position in the world
         public Position Position { get; private set; }
-        public List<Item> Inventory { get; }
+        // The inventory of the player
+        public List<Item> Inventory { get; } = new List<Item>();
+        // The state of the player
         public IState State { get; private set; }
+        // Used for trace/logging
         private IGameLogging GameLogging { set; get; }
+        // The equipped offensive item a player, CAN have
         public OffensiveItem? EquippedOffensive { get; private set; }
+        // The equipped defense item a player, CAN have
         public DefensiveItem? EquippedDefensive { get; private set; }
+        // Used to generate the possible damage
         private Random RandomGenerator = new Random();
+        // Returns true, if the player is poisoned
         public bool IsPoisoned
         {
             get 
@@ -32,16 +42,16 @@ namespace GameLibrary.Classes.Player
                 return State.GetType() == typeof(PoisonedState);
             }
         }
+        // Returns true, if the player has less than or equal to zero health points
         public bool IsDead
         {
-            get { return HealthPoints < 0; }
+            get { return HealthPoints <= 0; }
         }
         public Player(string name, IGameLogging gameLogging, int healthPoints = 100) 
         {
             Name = name;
             HealthPoints = healthPoints;
             Position = new Position(0,0);
-            Inventory = new List<Item>();
             State = new NormalState();
             GameLogging = gameLogging;
             GameLogging.WriteInformationToText(Name + " was created");
@@ -71,10 +81,23 @@ namespace GameLibrary.Classes.Player
         {
             return new List<DefensiveItem>(Inventory.OfType<DefensiveItem>().ToList());
         }
+        /// <summary>
+        /// Calculates the damage a player takes and subtracts it
+        /// Depends on the state a player is in
+        /// </summary>
+        /// <param name="taken">The damage the players gets</param>
+        /// <returns>The damage the player takes</returns>
         public Damage.Damage CalculateTakeDamage(Damage.Damage taken)
         {
-            return State.CalculateTakeDamage(taken,EquippedDefensive);
+            Damage.Damage dmgToTake = State.CalculateTakeDamage(taken,EquippedDefensive);
+            HealthPoints -= dmgToTake.DamageAmount;
+            return dmgToTake;
         }
+        /// <summary>
+        /// Calculates the damage a player gives
+        /// Depends on the state a player is in
+        /// </summary>
+        /// <returns>The damage the player gives</returns>
         public Damage.Damage CalculateGiveDamage()
         {
             return State.CalculateGiveDamage(
