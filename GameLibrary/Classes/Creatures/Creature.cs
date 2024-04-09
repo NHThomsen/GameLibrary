@@ -29,10 +29,10 @@ namespace GameLibrary.Classes.Creatures
         public IGameLogging GameLogging { get; protected set; }
         // Used to generate random numbers, in inherited classes
         protected Random RandomGenerator = new Random();
-        // Returns true, if a creature is dead
+        // Returns true, if the creature has less than or equal to zero health points
         public bool IsDead
         {
-            get { return HealthPoints < 0; }
+            get { return HealthPoints <= 0; }
         }
         public Creature(Position position, int healthPoints, string name, IGameLogging gameLogging, List<Item>? carriedLoot = null) 
         {

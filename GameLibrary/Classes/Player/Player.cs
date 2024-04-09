@@ -29,9 +29,9 @@ namespace GameLibrary.Classes.Player
         // Used for trace/logging
         private IGameLogging GameLogging { set; get; }
         // The equipped offensive item a player, CAN have
-        public OffensiveItem? EquippedOffensive { get; private set; }
+        public OffensiveItem? EquippedOffensive { get; private set; } = null;
         // The equipped defense item a player, CAN have
-        public DefensiveItem? EquippedDefensive { get; private set; }
+        public DefensiveItem? EquippedDefensive { get; private set; } = null;
         // Used to generate the possible damage
         private Random RandomGenerator = new Random();
         // Returns true, if the player is poisoned

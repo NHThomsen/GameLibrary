@@ -19,7 +19,10 @@ namespace GameLibrary.Classes.Creatures
         }
         public Minotaur CreateMinotaur(Position position, int healthPoints, List<Item>? loot = null, string name = "Minotaur") 
         {
-            return new Minotaur(position, healthPoints, name, GameLogging, loot);
+            Minotaur minotaur = new Minotaur(position, healthPoints, name, GameLogging, loot);
+            GameLogging.WriteInformationToText("Minotaur created: " + name);
+            World.World.Instance.AddToWorld(minotaur);
+            return minotaur;
         }
     }
 }
