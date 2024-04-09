@@ -22,6 +22,8 @@ namespace GameLibrary.Classes.Player
         public List<Item> Inventory { get; }
         public IState State { get; private set; }
         private IGameLogging GameLogging { set; get; }
+        public OffensiveItem? EquippedOffensive { get; private set; }
+        public DefensiveItem? EquippedDefensive { get; private set; }
         public bool IsPoisoned
         {
             get 
@@ -70,7 +72,7 @@ namespace GameLibrary.Classes.Player
         }
         public Damage.Damage CalculateTakeDamage(Damage.Damage taken)
         {
-            return State.CalculateTakeDamage(taken);
+            return State.CalculateTakeDamage(taken,EquippedDefensive);
         }
         /// <summary>
         /// Method meant to called when something poisons them
@@ -100,6 +102,32 @@ namespace GameLibrary.Classes.Player
                 return true;
             }
             return false;
+        }
+        /// <summary>
+        /// Equips an offensive item
+        /// If an item is already equipped, the previous item gets put in the inventory
+        /// </summary>
+        /// <param name="item">The offensive item to be equipped</param>
+        public void EquipOffensive(OffensiveItem item)
+        {
+            if(EquippedOffensive != null)
+            {
+                AddToInventory(EquippedOffensive);
+            }
+            EquippedOffensive = item;
+        }
+        /// <summary>
+        /// Equips an offensive item
+        /// If an item is already equipped, the previous item gets put in the inventory
+        /// </summary>
+        /// <param name="item">The defensive item to be equipped</param>
+        public void EquipDefensive(DefensiveItem item) 
+        {
+            if(EquippedDefensive != null)
+            {
+                AddToInventory(EquippedDefensive);
+            }
+            EquippedDefensive = item;
         }
     }
 }

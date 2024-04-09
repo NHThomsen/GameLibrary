@@ -1,4 +1,5 @@
 ﻿using GameLibrary.Classes.Damage;
+using GameLibrary.Classes.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace GameLibrary.Interfaces
 {
     public interface IState
     {
-        Damage CalculateTakeDamage(Damage taken);
+        Damage CalculateTakeDamage(Damage taken, DefensiveItem? defensiveItem);
     }
 }

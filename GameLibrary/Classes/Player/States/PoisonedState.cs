@@ -1,4 +1,5 @@
-﻿using GameLibrary.Interfaces;
+﻿using GameLibrary.Classes.Items;
+using GameLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,12 @@ namespace GameLibrary.Classes.Player.States
 {
     public class PoisonedState : IState
     {
-        public Damage.Damage CalculateTakeDamage(Damage.Damage taken)
+        public Damage.Damage CalculateTakeDamage(Damage.Damage taken, DefensiveItem? defensiveItem)
         {
+            if(defensiveItem != null)
+            {
+                return new Damage.Damage((taken.DamageAmount - defensiveItem.DamageReduction.DamageReductionAmount) + 1);
+            }
             return new Damage.Damage(taken.DamageAmount + 1);
         }
     }
