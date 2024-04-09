@@ -11,7 +11,7 @@ namespace GameLibrary.Classes.Creatures
 {
     public class Minotaur : Creature
     {
-        public Minotaur(Position position, int healthPoints, string name, List<Item> carriedLoot, IGameLogging gameLogging) : base(position, healthPoints, name, carriedLoot, gameLogging)
+        public Minotaur(Position position, int healthPoints, string name, IGameLogging gameLogging, List<Item>? carriedLoot) : base(position, healthPoints, name, gameLogging, carriedLoot)
         {
         }
 

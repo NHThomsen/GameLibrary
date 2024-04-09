@@ -17,9 +17,9 @@ namespace GameLibrary.Classes.Creatures
             GameLogging = gameLogging;
             GameLogging.WriteInformationToText("Factory created");
         }
-        public Minotaur CreateMinotaur(Position position, int healthPoints, List<Item> loot, string name = "Minotaur") 
+        public Minotaur CreateMinotaur(Position position, int healthPoints, List<Item>? loot = null, string name = "Minotaur") 
         {
-            return new Minotaur(position, healthPoints, name, loot, GameLogging);
+            return new Minotaur(position, healthPoints, name, GameLogging, loot);
         }
     }
 }

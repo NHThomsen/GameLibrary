@@ -20,7 +20,7 @@ namespace GameLibrary.Classes.Creatures
         // The creatures position in the world
         public Position Position { get; protected set; }
         // Loot, the creature is carrying
-        public List<Item> Loot {  get; protected set; }
+        public List<Item>? Loot {  get; protected set; }
         // Amount of health points a creature have
         public double HealthPoints { get; protected set; }
         // The name of a creature
@@ -34,10 +34,17 @@ namespace GameLibrary.Classes.Creatures
         {
             get { return HealthPoints < 0; }
         }
-        public Creature(Position position, int healthPoints, string name, List<Item> carriedLoot, IGameLogging gameLogging) 
+        public Creature(Position position, int healthPoints, string name, IGameLogging gameLogging, List<Item>? carriedLoot = null) 
         {
             Position = position;
-            Loot = carriedLoot;
+            if(carriedLoot != null)
+            {
+                Loot = carriedLoot;
+            }
+            else
+            {
+                Loot = null;
+            }
             HealthPoints = healthPoints;
             Name = name;
             GameLogging = gameLogging;
