@@ -17,7 +17,7 @@ namespace GameLibrary.Classes.World
         public int WorldHeight { get; private set; }
         private int height;
         private XmlDocument? configDocument = new XmlDocument();
-        private IGameLogging gameLogging;
+        private IGameLogging GameLogging;
         private List<WorldObject> WorldObjects = new List<WorldObject>();
 
         private static World? instance;
@@ -36,7 +36,7 @@ namespace GameLibrary.Classes.World
 
         private World()
         {
-            gameLogging = GameLogging.Instance;
+            GameLogging = Logging.GameLogging.Instance;
             configDocument.Load("WorldConfig.xml");
             XmlNode? nameNode = configDocument.DocumentElement.SelectSingleNode("Name");
             if (nameNode != null)
@@ -45,9 +45,10 @@ namespace GameLibrary.Classes.World
             }
             else
             {
+                GameLogging.WriteWarningToText("World name not found");
                 Name = "Standard world";
             }
-            gameLogging.WriteInformationToText("World name: " + Name);
+            GameLogging.WriteInformationToText("World name: " + Name);
 
             XmlNode? lengthNode = configDocument.DocumentElement.SelectSingleNode("Length");
             if (int.TryParse(lengthNode?.InnerText.Trim(), out length))
@@ -56,9 +57,10 @@ namespace GameLibrary.Classes.World
             }
             else
             {
+                GameLogging.WriteWarningToText("World length not found");
                 WorldLength = 10;
             }
-            gameLogging.WriteInformationToText("World length: " + WorldLength);
+            GameLogging.WriteInformationToText("World length: " + WorldLength);
 
             XmlNode? heightNode = configDocument.DocumentElement.SelectSingleNode("Height");
             if (int.TryParse(heightNode?.InnerText.Trim(), out height))
@@ -67,9 +69,10 @@ namespace GameLibrary.Classes.World
             }
             else
             {
+                GameLogging.WriteWarningToText("World height not found");
                 WorldHeight = 10;
             }
-            gameLogging.WriteInformationToText("World height: " + WorldHeight);
+            GameLogging.WriteInformationToText("World height: " + WorldHeight);
         }
         public bool InsideWorld(Position position)
         {

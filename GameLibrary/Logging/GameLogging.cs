@@ -47,7 +47,7 @@ namespace GameLibrary.Logging
 
         public void WriteWarningToText(string warning)
         {
-            throw new NotImplementedException();
+            traceSource.TraceEvent(TraceEventType.Warning,100, warning);
         }
     }
 }
