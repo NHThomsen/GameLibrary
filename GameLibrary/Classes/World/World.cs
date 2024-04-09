@@ -93,10 +93,6 @@ namespace GameLibrary.Classes.World
         /// <returns>False if position is not in the world. True if the position is in the world</returns>
         public bool InsideWorld(Position position)
         {
-            if(position.X < 0 || position.Y < 0)
-            {
-                return false;
-            }
             if(position.X > WorldLength || position.Y > WorldHeight) 
             {
                 return false;
