@@ -101,7 +101,7 @@ namespace GameLibrary.Classes.Player
         public Damage.Damage CalculateGiveDamage()
         {
             return State.CalculateGiveDamage(
-                new Damage.Damage(RandomGenerator.Next(5, 10)), 
+                new Damage.Damage(RandomGenerator.Next(3, 5)), 
                 EquippedOffensive);
         }
         /// <summary>
