@@ -18,7 +18,7 @@ namespace GameLibrary.Classes.Player
     {
         public string Name { get; private set; }
         public double HealthPoints { get; private set; }
-        public Position Position { get; set; }
+        public Position Position { get; private set; }
         public List<Item> Inventory { get; }
         public IState State { get; private set; }
         private IGameLogging GameLogging { set; get; }
@@ -86,6 +86,20 @@ namespace GameLibrary.Classes.Player
         public void CurePlayer()
         {
             State = new NormalState();
+        }
+        /// <summary>
+        /// Used to move to a new position in the world
+        /// </summary>
+        /// <param name="position">The new position in the world</param>
+        /// <returns>Returns true, if the position is in the world and sets the position. Else false, if the position is not in the world</returns>
+        public bool MoveToPosition(Position position) 
+        {
+            if(World.World.Instance.InsideWorld(position))
+            {
+                Position = position;
+                return true;
+            }
+            return false;
         }
     }
 }
