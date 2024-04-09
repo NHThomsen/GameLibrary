@@ -16,6 +16,7 @@ namespace GameLibrary.Classes.World
         private int height;
         private XmlDocument? configDocument = new XmlDocument();
         private IGameLogging gameLogging;
+        private List<WorldObject> worldObjects = new List<WorldObject>();
 
         private static World? instance;
         
@@ -79,6 +80,14 @@ namespace GameLibrary.Classes.World
                 return false;
             }
             return true;
+        }
+        public void AddToWorld(WorldObject worldObject)
+        {
+            worldObjects.Add(worldObject);
+        }
+        public void RemoveFromWorld(WorldObject worldObject) 
+        {
+            worldObjects.Remove(worldObject);
         }
     }
 }

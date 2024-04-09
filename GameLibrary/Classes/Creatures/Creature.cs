@@ -11,7 +11,7 @@ using System.Threading.Tasks.Dataflow;
 
 namespace GameLibrary.Classes.Creatures
 {
-    public abstract class Creature : ITakeDamage, IGiveDamage
+    public abstract class Creature : WorldObject, ITakeDamage, IGiveDamage
     {
         public Position Position { get; protected set; }
         public List<Item> Loot {  get; protected set; }
