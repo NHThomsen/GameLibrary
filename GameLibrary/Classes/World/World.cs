@@ -31,9 +31,9 @@ namespace GameLibrary.Classes.World
             }
         }
 
-        public World()
+        private World()
         {
-            gameLogging = new GameLogging();
+            gameLogging = GameLogging.Instance;
             configDocument.Load("WorldConfig.xml");
             XmlNode? nameNode = configDocument.DocumentElement.SelectSingleNode("Name");
             if (nameNode != null)

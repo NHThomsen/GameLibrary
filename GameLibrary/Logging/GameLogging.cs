@@ -1,4 +1,5 @@
-﻿using GameLibrary.Interfaces;
+﻿using GameLibrary.Classes.World;
+using GameLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,7 +14,21 @@ namespace GameLibrary.Logging
         private TraceSource traceSource = new TraceSource("Game Library");
         private TextWriterTraceListener textWriter;
 
-        public GameLogging()
+        private static GameLogging? instance;
+
+        public static GameLogging Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new GameLogging();
+                }
+                return instance;
+            }
+        }
+
+        private GameLogging()
         {
             traceSource.Switch = new SourceSwitch("GameLogging", "All");
             textWriter = new TextWriterTraceListener(new StreamWriter("logOutput.txt") { AutoFlush = true });
