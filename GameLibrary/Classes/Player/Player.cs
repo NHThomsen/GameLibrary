@@ -21,6 +21,7 @@ namespace GameLibrary.Classes.Player
         public Position Position { get; set; }
         public List<Item> Inventory { get; }
         public IState State { get; private set; }
+        private IGameLogging GameLogging { set; get; }
         public bool IsPoisoned
         {
             get 
@@ -32,13 +33,14 @@ namespace GameLibrary.Classes.Player
         {
             get { return HealthPoints < 0; }
         }
-        public Player(string name, int healthPoints = 100) 
+        public Player(string name, IGameLogging gameLogging, int healthPoints = 100) 
         {
             Name = name;
             HealthPoints = healthPoints;
             Position = new Position(0,0);
             Inventory = new List<Item>();
             State = new NormalState();
+            GameLogging = gameLogging;
         }
         /// <summary>
         /// Adds item to inventory

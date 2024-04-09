@@ -30,6 +30,7 @@ namespace GameLibrary.Classes.Creatures
             HealthPoints = healthPoints;
             Name = name;
             GameLogging = gameLogging;
+            GameLogging.WriteInformationToText("Creature created with name: " + Name);
         }
         public abstract Damage.Damage TakeDamage(Damage.Damage taken);
         public abstract Damage.Damage GiveDamage();
