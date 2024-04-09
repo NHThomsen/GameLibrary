@@ -54,7 +54,7 @@ namespace GameLibrary.Classes.Player
         /// <returns>List of offensive items</returns>
         public List<OffensiveItem> GetOffensiveItems()
         {
-            return Inventory.OfType<OffensiveItem>().ToList();
+            return new List<OffensiveItem>(Inventory.OfType<OffensiveItem>().ToList());
         }
         /// <summary>
         /// Gets defensive items from the players inventory
@@ -62,7 +62,7 @@ namespace GameLibrary.Classes.Player
         /// <returns>List of defensive items</returns>
         public List<DefensiveItem> GetDefensiveItems()
         {
-            return Inventory.OfType<DefensiveItem>().ToList();
+            return new List<DefensiveItem>(Inventory.OfType<DefensiveItem>().ToList());
         }
         public Damage.Damage CalculateTakeDamage(Damage.Damage taken)
         {

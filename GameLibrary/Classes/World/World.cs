@@ -1,4 +1,6 @@
-﻿using GameLibrary.Interfaces;
+﻿using GameLibrary.Classes.Creatures;
+using GameLibrary.Classes.Items;
+using GameLibrary.Interfaces;
 using GameLibrary.Logging;
 using System.Xml;
 
@@ -16,7 +18,7 @@ namespace GameLibrary.Classes.World
         private int height;
         private XmlDocument? configDocument = new XmlDocument();
         private IGameLogging gameLogging;
-        private List<WorldObject> worldObjects = new List<WorldObject>();
+        private List<WorldObject> WorldObjects = new List<WorldObject>();
 
         private static World? instance;
         
@@ -83,11 +85,19 @@ namespace GameLibrary.Classes.World
         }
         public void AddToWorld(WorldObject worldObject)
         {
-            worldObjects.Add(worldObject);
+            WorldObjects.Add(worldObject);
         }
         public void RemoveFromWorld(WorldObject worldObject) 
         {
-            worldObjects.Remove(worldObject);
+            WorldObjects.Remove(worldObject);
+        }
+        public List<Creature> GetCreaturesInWorld()
+        {
+            return new List<Creature>(WorldObjects.OfType<Creature>().ToList());
+        }
+        public List<LootContainer> GetLootContainersInWorld() 
+        {
+            return new List<LootContainer>(WorldObjects.OfType<LootContainer>().ToList());
         }
     }
 }
