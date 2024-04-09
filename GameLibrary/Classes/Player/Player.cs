@@ -24,6 +24,7 @@ namespace GameLibrary.Classes.Player
         private IGameLogging GameLogging { set; get; }
         public OffensiveItem? EquippedOffensive { get; private set; }
         public DefensiveItem? EquippedDefensive { get; private set; }
+        private Random RandomGenerator = new Random();
         public bool IsPoisoned
         {
             get 
@@ -73,6 +74,12 @@ namespace GameLibrary.Classes.Player
         public Damage.Damage CalculateTakeDamage(Damage.Damage taken)
         {
             return State.CalculateTakeDamage(taken,EquippedDefensive);
+        }
+        public Damage.Damage CalculateGiveDamage()
+        {
+            return State.CalculateGiveDamage(
+                new Damage.Damage(RandomGenerator.Next(5, 10)), 
+                EquippedOffensive);
         }
         /// <summary>
         /// Method meant to called when something poisons them

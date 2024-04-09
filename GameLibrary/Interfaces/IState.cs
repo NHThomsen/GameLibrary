@@ -11,5 +11,6 @@ namespace GameLibrary.Interfaces
     public interface IState
     {
         Damage CalculateTakeDamage(Damage taken, DefensiveItem? defensiveItem);
+        Damage CalculateGiveDamage(Damage given, OffensiveItem? offensiveItem);
     }
 }

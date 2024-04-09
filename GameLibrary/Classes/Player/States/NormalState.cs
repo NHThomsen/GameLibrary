@@ -10,6 +10,15 @@ namespace GameLibrary.Classes.Player.States
 {
     public class NormalState : IState
     {
+        public Damage.Damage CalculateGiveDamage(Damage.Damage given, OffensiveItem? offensiveItem)
+        {
+            if(offensiveItem != null) 
+            {
+                return new Damage.Damage(given.DamageAmount + offensiveItem.DamageGive.DamageAmount);
+            }
+            return new Damage.Damage(given.DamageAmount);
+        }
+
         public Damage.Damage CalculateTakeDamage(Damage.Damage taken, DefensiveItem? defensiveItem)
         {
             if(defensiveItem != null) 

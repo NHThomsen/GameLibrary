@@ -10,6 +10,15 @@ namespace GameLibrary.Classes.Player.States
 {
     public class PoisonedState : IState
     {
+        public Damage.Damage CalculateGiveDamage(Damage.Damage given, OffensiveItem? offensiveItem)
+        {
+            if(offensiveItem != null) 
+            {
+                return new Damage.Damage((given.DamageAmount + offensiveItem.DamageGive.DamageAmount) - 1);
+            }
+            return new Damage.Damage(given.DamageAmount - 1);
+        }
+
         public Damage.Damage CalculateTakeDamage(Damage.Damage taken, DefensiveItem? defensiveItem)
         {
             if(defensiveItem != null)
