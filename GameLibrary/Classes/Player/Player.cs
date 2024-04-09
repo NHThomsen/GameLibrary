@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace GameLibrary.Classes.Player
 {
     /// <summary>
-    /// Player to be controlled
+    /// Player in the game
     /// </summary>
     public class Player
     {

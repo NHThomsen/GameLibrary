@@ -42,7 +42,10 @@ namespace GameLibrary.Classes.World
                 return instance;
             }
         }
-        // Loads in values from the config file. If not found, default values are loaded
+        /// <summary>
+        /// Loads values from a config file
+        /// If values aren't found, default values are loaded
+        /// </summary>
         private World()
         {
             GameLogging = Logging.GameLogging.Instance;
@@ -83,7 +86,11 @@ namespace GameLibrary.Classes.World
             }
             GameLogging.WriteInformationToText("World height: " + WorldHeight);
         }
-        // Used to determine if a position is inside the world
+        /// <summary>
+        /// Determines if a position is inside the world or not
+        /// </summary>
+        /// <param name="position">The position in the world</param>
+        /// <returns>False if position is not in the world. True if the position is in the world</returns>
         public bool InsideWorld(Position position)
         {
             if(position.X < 0 || position.Y < 0)
@@ -96,22 +103,34 @@ namespace GameLibrary.Classes.World
             }
             return true;
         }
-        // Adds an object to the world
+        /// <summary>
+        /// Adds an object to the world
+        /// </summary>
+        /// <param name="worldObject">The object to be in the world</param>
         public void AddToWorld(WorldObject worldObject)
         {
             WorldObjects.Add(worldObject);
         }
-        // Removes an object from the world
+        /// <summary>
+        /// Removes an object from the world
+        /// </summary>
+        /// <param name="worldObject">Objects to be removed from the world</param>
         public void RemoveFromWorld(WorldObject worldObject) 
         {
             WorldObjects.Remove(worldObject);
         }
-        // Gets a copy, of a list with all creatures in the world
+        /// <summary>
+        /// Get a list of creatures in the world
+        /// </summary>
+        /// <returns>A copy of the list, of the creatures</returns>
         public List<Creature> GetCreaturesInWorld()
         {
             return new List<Creature>(WorldObjects.OfType<Creature>().ToList());
         }
-        // Gets a copy, of a list with all loot containers in the world
+        /// <summary>
+        /// Get a list of loot containers in the world
+        /// </summary>
+        /// <returns>A copy of the list, of the loot containers</returns>
         public List<LootContainer> GetLootContainersInWorld() 
         {
             return new List<LootContainer>(WorldObjects.OfType<LootContainer>().ToList());
